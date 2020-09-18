@@ -28,7 +28,7 @@ async function getQuote() {
   try {
     const response = await fetch(proxyUrl + apiUrl);
     const data = await response.json();
-
+    console.log(data);
     // default author to unknown if no author
     if (data.quoteAuthor === '') {
       authorText.innerText = 'unknown';
@@ -47,7 +47,7 @@ async function getQuote() {
     complete();
   } catch (error) {
     // getQuote(); //due to API issues
-    console.log('you have a problem here');
+    console.log('you have a problem here', error);
   }
 }
 
@@ -64,4 +64,4 @@ newQuoteBtn.addEventListener('click', getQuote);
 twitterBtn.addEventListener('click', tweetQuote);
 
 // on load
-// getQuote();
+getQuote();
